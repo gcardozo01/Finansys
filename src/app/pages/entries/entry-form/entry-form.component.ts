@@ -47,11 +47,9 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   submitForm() {
     this.submittingForm = true;
 
-    if (this.currentAction == "new") {
-      this.createEntry();
-    } else {
-      this.updateEntry();
-    }
+    if (this.currentAction == "new") this.createEntry();
+    // currentAction == "edit"
+    else this.updateEntry();
   }
 
   // PRIVATE METHODS
@@ -66,6 +64,11 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
       description: [null],
+      type: [null, [Validators.required]],
+      amount: [null, [Validators.required]],
+      date: [null, [Validators.required]],
+      paid: [null, [Validators.required]],
+      categoryId: [null, [Validators.required]],
     });
   }
 
@@ -76,9 +79,9 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
           switchMap((params) => this.entryService.getById(+params.get("id")))
         )
         .subscribe(
-          (res) => {
-            this.entry = res;
-            this.entryForm.patchValue(res); // binds loaded entry data to EntryForm
+          (entry) => {
+            this.entry = entry;
+            this.entryForm.patchValue(entry); // binds loaded entry data to EntryForm
           },
           (error) => alert("Ocorreu um erro no servidor, tente mais tarde.")
         );
@@ -87,10 +90,10 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private setPageTitle() {
     if (this.currentAction == "new")
-      this.pageTitle = "Cadastro de Nova Categoria";
+      this.pageTitle = "Cadastro de Novo Lançamento";
     else {
       const entryName = this.entry.name || "";
-      this.pageTitle = "Editando Categoria: " + entryName;
+      this.pageTitle = "Editando Lançamento: " + entryName;
     }
   }
 
@@ -98,8 +101,8 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
 
     this.entryService.create(entry).subscribe(
-      (res) => this.actionsForSuccess(res),
-      (err) => this.actionsForError(err)
+      (entry) => this.actionsForSuccess(entry),
+      (error) => this.actionsForError(error)
     );
   }
 
@@ -107,8 +110,8 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
 
     this.entryService.update(entry).subscribe(
-      (res) => this.actionsForSuccess(res),
-      (err) => this.actionsForError(err)
+      (entry) => this.actionsForSuccess(entry),
+      (error) => this.actionsForError(error)
     );
   }
 
