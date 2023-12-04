@@ -14,7 +14,7 @@ export class CategoryService {
   getAll(): Observable<Category[]> {
     return this.http
       .get(this.apiPath)
-      .pipe(catchError(this.hadleError), map(this.jsonDataToCategories));
+      .pipe(catchError(this.handleError), map(this.jsonDataToCategories));
   }
 
   getById(id: number): Observable<Category> {
@@ -22,20 +22,20 @@ export class CategoryService {
 
     return this.http
       .get(url)
-      .pipe(catchError(this.hadleError), map(this.jsonDataToCategory));
+      .pipe(catchError(this.handleError), map(this.jsonDataToCategory));
   }
 
   create(category: Category): Observable<Category> {
     return this.http
       .post(this.apiPath, category)
-      .pipe(catchError(this.hadleError), map(this.jsonDataToCategory));
+      .pipe(catchError(this.handleError), map(this.jsonDataToCategory));
   }
 
   update(category: Category): Observable<Category> {
     const url = `${this.apiPath}/${category.id}`;
 
     return this.http.put(url, category).pipe(
-      catchError(this.hadleError),
+      catchError(this.handleError),
       map(() => category)
     );
   }
@@ -44,7 +44,7 @@ export class CategoryService {
     const url = `${this.apiPath}/${id}`;
 
     return this.http.delete(url).pipe(
-      catchError(this.hadleError),
+      catchError(this.handleError),
       map(() => null)
     );
   }
@@ -60,7 +60,7 @@ export class CategoryService {
     return jsonData as Category;
   }
 
-  private hadleError(error: any): Observable<any> {
+  private handleError(error: any): Observable<any> {
     console.log("ERRO NA REQUISIÇÃO => ", error);
     return throwError(error);
   }
