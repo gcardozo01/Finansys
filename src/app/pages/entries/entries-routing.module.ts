@@ -1,6 +1,8 @@
+// Angular
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
+// Components
 import { EntryListComponent } from "./entry-list/entry-list.component";
 import { EntryFormComponent } from "./entry-form/entry-form.component";
 

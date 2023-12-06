@@ -1,3 +1,4 @@
+// Models
 import { Category } from "../../categories/shared/category.model";
 
 export class Entry {

@@ -1,18 +1,19 @@
-import { Component, OnInit, AfterContentChecked } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+// Angular
+import { AfterContentChecked, Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { Category } from "../shared/category.model";
-import { CategoryService } from "../shared/category.service";
+// Models
+import { Category } from "../../categories/shared/category.model";
 
-import { switchMap } from "rxjs/operators";
+// Services
+import { CategoryService } from "../../categories/shared/category.service";
 
+// Libs
 import toastr from "toastr";
+
+// RXJS
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-category-form",
@@ -55,7 +56,6 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   // PRIVATE METHODS
-
   private setCurrentAction() {
     if (this.route.snapshot.url[0].path == "new") this.currentAction = "new";
     else this.currentAction = "edit";

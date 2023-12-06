@@ -1,6 +1,10 @@
+// Angular
 import { Component, OnInit } from "@angular/core";
 
+// Models
 import { Category } from "../shared/category.model";
+
+// Services
 import { CategoryService } from "../shared/category.service";
 
 @Component({

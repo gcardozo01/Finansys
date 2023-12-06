@@ -1,4 +1,7 @@
+// Angular
 import { InMemoryDbService } from "angular-in-memory-web-api";
+
+// Models
 import { Category } from "./pages/categories/shared/category.model";
 import { Entry } from "./pages/entries/shared/entry.model";
 

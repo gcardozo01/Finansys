@@ -1,5 +1,8 @@
+// Angular
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
+// Components
 import { CategoryListComponent } from "./category-list/category-list.component";
 import { CategoryFormComponent } from "./category-form/category-form.component";
 

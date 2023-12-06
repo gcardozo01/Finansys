@@ -1,13 +1,18 @@
+// Angular
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
 
-import { CategoriesRoutingModule } from "./categories-routing.module";
+// Components
 import { CategoryListComponent } from "./category-list/category-list.component";
 import { CategoryFormComponent } from "./category-form/category-form.component";
 
+// Modules
+import { SharedModule } from "src/app/shared/shared.module";
+
+// Raouting modules
+import { CategoriesRoutingModule } from "./categories-routing.module";
+
 @NgModule({
   declarations: [CategoryListComponent, CategoryFormComponent],
-  imports: [CommonModule, CategoriesRoutingModule, ReactiveFormsModule],
+  imports: [CategoriesRoutingModule, SharedModule],
 })
 export class CategoriesModule {}

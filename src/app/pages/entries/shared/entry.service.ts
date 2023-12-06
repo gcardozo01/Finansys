@@ -1,8 +1,15 @@
+// Angular
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, pipe, throwError } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+
+// Models
 import { Entry } from "./entry.model";
+
+// RXJS
+import { Observable, pipe, throwError } from "rxjs";
 import { map, catchError, flatMap } from "rxjs/operators";
+
+// Services
 import { CategoryService } from "../../categories/shared/category.service";
 
 @Injectable({
