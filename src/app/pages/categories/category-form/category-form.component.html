@@ -19,7 +19,7 @@
   </div>
 </div>
 
-<form [formGroup]="categoryForm" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card">
     <div class="card-header">Informações sobre a categoria</div>
 
@@ -37,14 +37,14 @@
           <div
             class="text-danger"
             *ngIf="
-              categoryForm.get('name').invalid &&
-              categoryForm.get('name').touched
+              resourceForm.get('name').invalid &&
+              resourceForm.get('name').touched
             "
           >
-            <div *ngIf="categoryForm.get('name').errors.required">
+            <div *ngIf="resourceForm.get('name').errors.required">
               dado obrigatório
             </div>
-            <div *ngIf="categoryForm.get('name').errors.minlength">
+            <div *ngIf="resourceForm.get('name').errors.minlength">
               deve ter no mínimo 2 caracteres
             </div>
           </div>
@@ -71,7 +71,7 @@
   </div>
 
   <button
-    [disabled]="submittingForm || categoryForm.invalid"
+    [disabled]="submittingForm || resourceForm.invalid"
     type="submit"
     class="btn btn-primary btn-lg float-right mt-3"
   >
