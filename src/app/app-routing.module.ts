@@ -4,6 +4,12 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
+    path: "",
+    redirectTo: "/reports",
+    pathMatch: "full",
+  },
+
+  {
     path: "categories",
     loadChildren: "./pages/categories/categories.module#CategoriesModule",
   },
