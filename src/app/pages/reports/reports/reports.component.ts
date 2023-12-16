@@ -40,8 +40,8 @@ export class ReportsComponent implements OnInit {
     },
   };
 
-  @ViewChild("month") month: ElementRef = null;
-  @ViewChild("year") year: ElementRef = null;
+  @ViewChild("month", { static: true }) month: ElementRef = null;
+  @ViewChild("year", { static: true }) year: ElementRef = null;
 
   constructor(
     private categoryService: CategoryService,
