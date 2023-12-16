@@ -1,5 +1,5 @@
 // Angular
-import { AfterContentChecked, OnInit, Injector } from "@angular/core";
+import { AfterContentChecked, OnInit, Injector, Directive } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
@@ -15,6 +15,7 @@ import toastr from "toastr";
 // RXJS
 import { switchMap } from "rxjs/operators";
 
+@Directive()
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
   implements OnInit, AfterContentChecked
 {

@@ -1,5 +1,5 @@
 // Angular
-import { OnInit } from "@angular/core";
+import { OnInit, Directive } from "@angular/core";
 
 // Models
 import { BaseResourceModel } from "../../models/base-resource.model";
@@ -7,6 +7,7 @@ import { BaseResourceModel } from "../../models/base-resource.model";
 // Services
 import { BaseResourceService } from "../../services/base-resource.service";
 
+@Directive()
 export abstract class BaseResourceListComponent<T extends BaseResourceModel>
   implements OnInit
 {
